@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Octavio AI Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #00ff99;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #00ff99;
+    text-align: left;
+  }
+
+  th {
+    background: #222;
+  }
+
+  tr:nth-child(even) {
+    background: #1a1a1a;
+  }
+
+  button {
+    padding: 5px 10px;
+    background: #00ff99;
+    border: none;
+    color: #111;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Octavio AI Dashboard</h1>
+
+<h2>Utilisateurs Activés</h2>
+<table id="usersTable">
+  <thead>
+    <tr>
+      <th>Numéro WhatsApp</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<h2>Messages Reçus</h2>
+<table id="messagesTable">
+  <thead>
+    <tr>
+      <th>De</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+  // --- Simule les données en temps réel ---
+  const users = [
+    { numero: "0820737907", code: "A7F9K2LM" },
+    { numero: "0812345678", code: "B3X2M1QZ" }
+  ]
+
+  const messages = [
+    { from: "0820737907", text: "Bonjour Octavio !" },
+    { from: "0812345678", text: "Salut AI !" }
+  ]
+
+  const usersTable = document.querySelector("#usersTable tbody")
+  const messagesTable = document.querySelector("#messagesTable tbody")
+
+  function renderUsers() {
+    usersTable.innerHTML = ""
+    users.forEach(u => {
+      const tr = document.createElement("tr")
+      tr.innerHTML = `<td>${u.numero}</td><td>${u.code}</td>`
+      usersTable.appendChild(tr)
+    })
+  }
+
+  function renderMessages() {
+    messagesTable.innerHTML = ""
+    messages.forEach(m => {
+      const tr = document.createElement("tr")
+      tr.innerHTML = `<td>${m.from}</td><td>${m.text}</td>`
+      messagesTable.appendChild(tr)
+    })
+  }
+
+  renderUsers()
+  renderMessages()
+</script>
+
+</body>
+  </html>
