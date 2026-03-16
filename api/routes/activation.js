@@ -1,21 +1,18 @@
 // api/routes/activation.js
 
 import express from "express"
-import { generateCodeForNumber } from "../../services/activation/codeGenerator.js"
+import { activateUser, getUsers } from "../controllers/activationController.js"
 
 const router = express.Router()
 
-// Route POST pour générer un code réel
+// POST /activate → l'utilisateur envoie son numéro et reçoit son code
 router.post("/", (req, res) => {
-  const { numero } = req.body
-  if (!numero) return res.status(400).json({ error: "Numéro requis" })
+  activateUser(req, res)
+})
 
-  const code = generateCodeForNumber(numero)
-
-  res.json({
-    numero,
-    code
-  })
+// GET /activate/users → récupérer tous les utilisateurs activés (dashboard)
+router.get("/users", (req, res) => {
+  getUsers(req, res)
 })
 
 export default router
